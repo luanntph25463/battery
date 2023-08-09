@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/setting_activity_gradient_background"
+    tools:context=".settingFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:text="@string/setting_text"
+            android:textSize="34dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/setting_button_gradient_background_2"
+            android:padding="15dp"
+            android:text="@string/low_battery_alarm_percent_text"
+            android:textSize="20dp"
+            tools:textColor="@color/white" />
+
+        <Spinner
+            android:id="@+id/off_time_spinner"
+            android:background="@drawable/home_button_gradient_background"
+            android:layout_width="102dp"
+            android:layout_height="47dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="95dp"
+            android:gravity="end" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/setting_button_gradient_background_2"
+        android:padding="15dp"
+        android:text="@string/low_battery_alarm_percent_text"
+        android:textSize="20dp"
+        tools:textColor="@color/white" />
+
+    <Switch
+        android:id="@+id/noti_switch"
+        android:layout_width="102dp"
+        android:layout_height="47dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="195dp"
+        android:gravity="end" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="260dp"
+        android:background="@drawable/setting_button_gradient_background_2"
+        android:padding="15dp"
+        android:text="@string/low_battery_alarm_percent_text"
+        android:textSize="20dp"
+        tools:textColor="@color/white" />
+
+    <Switch
+        android:id="@+id/noti_sound_switch"
+        android:layout_width="102dp"
+        android:layout_height="47dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="275dp"
+        android:gravity="end" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/setting_button_gradient_background_2"
+        android:padding="15dp"
+        android:text="@string/low_battery_alarm_percent_text"
+        android:textSize="20dp"
+        tools:textColor="@color/white" />
+
+    <Spinner
+        android:id="@+id/low_rate_spinner"
+        android:background="@drawable/home_button_gradient_background"
+        android:layout_width="102dp"
+        android:layout_height="47dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="355dp"
+        android:gravity="end" />
+</FrameLayout>
