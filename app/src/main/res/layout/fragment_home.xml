@@ -8,19 +8,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="79dp"
+        android:layout_height="82dp"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:text="@string/home_text"
-            android:textSize="34dp"
-            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView3"
@@ -37,7 +28,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="70dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -121,6 +112,188 @@
 
                 <TextView
                     android:id="@+id/percent_in4"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:text="8 hours ago" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgwifi"
+            android:layout_width="139dp"
+            android:layout_height="137dp"
+
+            android:layout_margin="15dp"
+            android:src="@drawable/baseline_wifi_24"
+            />
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="95dp"
+                    android:layout_height="33dp"
+                    android:text="Network Type"
+                    tools:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/wifi_in"
+                    android:layout_width="41dp"
+                    android:layout_height="wrap_content"
+                    android:text="78%" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="95dp"
+                    android:layout_height="33dp"
+                    android:text="Network Status"
+                    tools:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/wifi_in2"
+                    android:layout_width="41dp"
+                    android:layout_height="wrap_content"
+                    android:text="78°C" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="122dp"
+                    android:layout_height="34dp"
+                    android:text="Network rate:"
+                    tools:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/wifi_in3"
+                    android:layout_width="41dp"
+                    android:layout_height="wrap_content"
+                    android:text="Full" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="122dp"
+                    android:layout_height="46dp"
+                    android:text="Provider"
+                    tools:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/wifi_in4"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:text="8 hours ago" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="360dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgblutoolth"
+            android:layout_width="139dp"
+            android:layout_height="137dp"
+
+            android:layout_margin="15dp"
+            android:src="@drawable/baseline_bluetooth_24"
+            />
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="95dp"
+                    android:layout_height="33dp"
+                    android:text="Connected Name"
+                    tools:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/bluetooth_in"
+                    android:layout_width="41dp"
+                    android:layout_height="wrap_content"
+                    android:text="78%" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="95dp"
+                    android:layout_height="33dp"
+                    android:text="Strength:"
+                    tools:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/bluetooth_in2"
+                    android:layout_width="41dp"
+                    android:layout_height="wrap_content"
+                    android:text="78°C" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="122dp"
+                    android:layout_height="34dp"
+                    android:text="@string/charging_status_text"
+                    tools:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/bluetooth_in3"
+                    android:layout_width="41dp"
+                    android:layout_height="wrap_content"
+                    android:text="Full" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="122dp"
+                    android:layout_height="46dp"
+                    android:text="@string/last_charge_text"
+                    tools:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/bluetooth_in4"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
                     android:text="8 hours ago" />
