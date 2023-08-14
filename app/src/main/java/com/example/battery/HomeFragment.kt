@@ -14,7 +14,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_home.bluetooth_in
 import kotlinx.android.synthetic.main.fragment_home.img
+import kotlinx.android.synthetic.main.fragment_home.imgwifi
 import kotlinx.android.synthetic.main.fragment_home.percent_in
 import kotlinx.android.synthetic.main.fragment_home.percent_in2
 import kotlinx.android.synthetic.main.fragment_home.percent_in3
@@ -26,7 +28,7 @@ import kotlinx.android.synthetic.main.fragment_home.wifi_in4
 import java.util.concurrent.TimeUnit
 
 
-class HomeFragment : Fragment(), BatteryStatusReceiver.BatteryListener  {
+class HomeFragment : Fragment(), BatteryStatusReceiver.BatteryListener {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var notificationManager: NotificationManager
 
@@ -35,23 +37,21 @@ class HomeFragment : Fragment(), BatteryStatusReceiver.BatteryListener  {
     private val channelId = "Pin notification"
     private val notificationId = 1
 
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-            // khoi tao notification
-            createNotificationChannel()
-            notificationManager =
-                requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        // khoi tao notification
+        createNotificationChannel()
+        notificationManager =
+            requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
 
 
-            batteryStatusReceiver = BatteryStatusReceiver(this)
-            val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-            requireContext().registerReceiver(batteryStatusReceiver, intentFilter)
+        batteryStatusReceiver = BatteryStatusReceiver(this)
+        val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
+        requireContext().registerReceiver(batteryStatusReceiver, intentFilter)
 
-            val intentFilters = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-            requireContext().registerReceiver(batteryStatusReceiver, intentFilters)
-        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,6 +77,7 @@ class HomeFragment : Fragment(), BatteryStatusReceiver.BatteryListener  {
             notificationManager.createNotificationChannel(channel)
         }
     }
+
     // gui giu lieu len notification
     // nhan vao gia tri isCharging kiem tra xem co dang sac hay k
     // nhan gia tri so luong pin
@@ -94,7 +95,7 @@ class HomeFragment : Fragment(), BatteryStatusReceiver.BatteryListener  {
         notificationManager.notify(notificationId, builder.build())
     }
 
-    override fun onBatteryLevelChanged( level: Int) {
+    override fun onBatteryLevelChanged(level: Int) {
         percent_in.text = " $level %"
 
         // send notification
@@ -109,32 +110,45 @@ class HomeFragment : Fragment(), BatteryStatusReceiver.BatteryListener  {
 
     override fun onBatteryisChanging(ischaring: Boolean) {
         if (!ischaring) {
-                    percent_in3.text = "Not charging"
-                    img.setImageResource(R.drawable.baseline_battery_unknown_24)
+            percent_in3.text = "Not charging"
+            img.setImageResource(R.drawable.baseline_battery_unknown_24)
+
+            initializeSharedPreferences()
 
 
-                    // luu thoi gian hien tai
-                } else {
-                    // luu thoi gian hien tai
-                    val currentTime = System.currentTimeMillis()
-                    saveChargingTime(currentTime)
-                    // get time charging with get getSavedChargingTime
-                    // lay thoi gian cu
-                    val lastChargingTime = getSavedChargingTime()
-                    percent_in4.text = lastChargingTime
-                    img.setImageResource(R.drawable.baseline_battery_charging_full_24)
-                    percent_in3.text = " Charging"
-                }
+            // get time charging with get getSavedChargingTime
+            val lastChargingTime = getSavedChargingTime()
+            percent_in4.text = lastChargingTime
+
+        } else {
+            //if not initialized
+            initializeSharedPreferences()
+
+            // get time charging with get getSavedChargingTime
+            val currentTime = System.currentTimeMillis()
+            saveChargingTime(currentTime)
+            img.setImageResource(R.drawable.baseline_battery_charging_full_24)
+
+            percent_in3.text = " Charging"
+
+        }
 
     }
 
     override fun onConnectionTypeChanged(wifi: String) {
         wifi_in.text = wifi
+        Log.d("this", wifi)
+        if (wifi == "Wi-Fi") {
+            imgwifi.setImageResource(R.drawable.baseline_wifi_24)
+        } else if (wifi == "Mobile Data") {
+            imgwifi.setImageResource(R.drawable.baseline_3g_mobiledata_24)
+        } else {
+            imgwifi.setImageResource(R.drawable.baseline_signal_wifi_connected_no_internet_4_24)
+        }
     }
 
     override fun onSpeedChanged(speed: Float) {
         wifi_in2.text = speed.toString()
-
     }
 
     override fun onRating(speed: String) {
@@ -146,8 +160,8 @@ class HomeFragment : Fragment(), BatteryStatusReceiver.BatteryListener  {
     }
 
     override fun BluttothName(name: String) {
-        wifi_in4.text = name
-        Log.d("this","$name")
+        bluetooth_in.text = name
+        Log.d("this", "$name")
 
     }
 
@@ -166,9 +180,14 @@ class HomeFragment : Fragment(), BatteryStatusReceiver.BatteryListener  {
 
 
     private fun saveChargingTime(time: Long) {
+        // save battery  curent time in sharedpreferences
         val editor = sharedPreferences.edit()
         editor.putLong("LastChargingTime", time)
         editor.apply()
+    }
+    //initialized
+    fun initializeSharedPreferences() {
+        sharedPreferences = requireContext().getSharedPreferences("LastChargingTime", Context.MODE_PRIVATE)
     }
     // lay gia tri cu da luu vao sharedd preferences
     private fun getSavedChargingTime(): String {
